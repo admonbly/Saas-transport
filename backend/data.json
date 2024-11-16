@@ -1,0 +1,43 @@
+{
+    "users": [
+      { "id": 1, "name": "Alice Dupont", "role": "Admin" },
+      { "id": 2, "name": "Bob Martin", "role": "User" },
+      { "id": 3, "name": "Charlie Petit", "role": "Driver" }
+    ],
+    "bookings": [
+      { "id": 1, "passengerName": "Alice Dupont", "tripId": 101, "status": "Confirmed" },
+      { "id": 2, "passengerName": "Bob Martin", "tripId": 102, "status": "Pending" },
+      { "id": 3, "passengerName": "Charlie Petit", "tripId": 101, "status": "Cancelled" }
+    ],
+    "trips": [
+      { "id": 101, "routeName": "Paris - Lyon", "departure": "2024-11-10T08:00", "arrival": "2024-11-10T12:00" },
+      { "id": 102, "routeName": "Marseille - Nice", "departure": "2024-11-11T09:00", "arrival": "2024-11-11T11:30" },
+      { "id": 103, "routeName": "Lille - Paris", "departure": "2024-11-12T07:30", "arrival": "2024-11-12T10:30" }
+    ],
+    "fleet": [
+      { "id": 1, "registrationNumber": "ABC123", "model": "Mercedes Sprinter", "type": "Minibus", "status": "Available" },
+      { "id": 2, "registrationNumber": "XYZ789", "model": "Ford Transit", "type": "Van", "status": "In Maintenance" },
+      { "id": 3, "registrationNumber": "LMN456", "model": "Iveco Daily", "type": "Minibus", "status": "Assigned to Trip" }
+    ],
+    "transactions": [
+      { "id": 1, "type": "income", "description": "Ticket sale Paris-Lyon", "amount": 100.0, "date": "2024-11-01" },
+      { "id": 2, "type": "expense", "description": "Fuel for trip Marseille-Nice", "amount": 50.0, "date": "2024-11-02" },
+      { "id": 3, "type": "income", "description": "Ticket sale Lille-Paris", "amount": 80.0, "date": "2024-11-03" }
+    ],
+    "financials": [
+      { "id": 1, "category": "Revenue", "amount": 5000, "description": "Monthly Ticket Sales", "date": "2024-11-01" },
+      { "id": 2, "category": "Expenses", "amount": 1500, "description": "Vehicle Maintenance", "date": "2024-11-02" },
+      { "id": 3, "category": "Revenue", "amount": 2000, "description": "Corporate Bookings", "date": "2024-11-03" }
+    ],
+    "reports": [
+      { "id": 1, "title": "Monthly Performance", "date": "2024-11-01", "summary": "Revenue increased by 20% compared to the previous month." },
+      { "id": 2, "title": "Fleet Utilization", "date": "2024-11-02", "summary": "80% of the fleet was operational in the last quarter." },
+      { "id": 3, "title": "Customer Satisfaction", "date": "2024-11-03", "summary": "Overall satisfaction rating is 4.5/5." }
+    ],
+    "tripManagement": [
+      { "id": 1, "routeName": "Paris - Lyon", "status": "Scheduled", "departure": "2024-11-10T08:00", "arrival": "2024-11-10T12:00" },
+      { "id": 2, "routeName": "Marseille - Nice", "status": "Completed", "departure": "2024-11-11T09:00", "arrival": "2024-11-11T11:30" },
+      { "id": 3, "routeName": "Lille - Paris", "status": "Cancelled", "departure": "2024-11-12T07:30", "arrival": "2024-11-12T10:30" }
+    ]
+  }
+  
