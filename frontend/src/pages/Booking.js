@@ -1,7 +1,5 @@
-// frontend/src/pages/Booking.js
 import React, { useState, useEffect } from 'react';
 import { getBookings, addBooking, cancelBooking } from '../api/api';
-import './Booking.css';
 
 const Booking = () => {
   const [bookings, setBookings] = useState([]);
@@ -16,11 +14,9 @@ const Booking = () => {
   }, []);
 
   const handleAddBooking = async () => {
-    if (newBooking.passengerName && newBooking.tripId) {
-      await addBooking(newBooking);
-      setBookings([...bookings, newBooking]);
-      setNewBooking({ passengerName: '', tripId: '' });
-    }
+    const response = await addBooking(newBooking);
+    setBookings([...bookings, response.data]);
+    setNewBooking({ passengerName: '', tripId: '' });
   };
 
   const handleCancelBooking = async (bookingId) => {
@@ -31,7 +27,6 @@ const Booking = () => {
   return (
     <div className="booking container">
       <h2 className="section-title">Gestion des Réservations</h2>
-      
       <div className="table-container">
         <table className="table">
           <thead>
@@ -47,14 +42,15 @@ const Booking = () => {
                 <td>{booking.passengerName}</td>
                 <td>{booking.tripId}</td>
                 <td>
-                  <button className="button delete" onClick={() => handleCancelBooking(booking.id)}>Annuler</button>
+                  <button className="button delete" onClick={() => handleCancelBooking(booking.id)}>
+                    Annuler
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
       <div className="form-group">
         <h3>Ajouter une Réservation</h3>
         <input
@@ -69,7 +65,9 @@ const Booking = () => {
           value={newBooking.tripId}
           onChange={(e) => setNewBooking({ ...newBooking, tripId: e.target.value })}
         />
-        <button className="button" onClick={handleAddBooking}>Réserver</button>
+        <button className="button" onClick={handleAddBooking}>
+          Réserver
+        </button>
       </div>
     </div>
   );
