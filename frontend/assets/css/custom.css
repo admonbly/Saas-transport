@@ -1,0 +1,137 @@
+/* Styles globaux */
+body {
+    @apply bg-gradient-to-r from-blue-50 to-blue-100 text-gray-800 transition-colors ease-linear;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Conteneur principal */
+  .container {
+    @apply container mx-auto px-4 flex flex-col gap-6;
+  }
+  
+  /* Barre de navigation */
+  nav {
+    @apply flex justify-between items-center bg-white py-4 px-6 rounded-lg shadow-md sticky top-0 z-50;
+  }
+  
+  nav a {
+    @apply text-blue-600 font-medium px-4 py-2 rounded-lg transition-transform duration-300;
+  }
+  
+  nav a:hover {
+    @apply bg-blue-100 scale-105;
+  }
+  
+  /* Boutons principaux */
+  .button {
+    @apply bg-gradient-to-r from-blue-400 to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300;
+  }
+  
+  .button:hover {
+    @apply shadow-lg transform -translate-y-1;
+  }
+  
+  /* Cartes */
+  .card {
+    @apply bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 relative overflow-hidden;
+  }
+  
+  .card h3 {
+    @apply text-blue-600 font-semibold;
+  }
+  
+  /* Grille fluide */
+  .dashboard {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  /* Tableaux */
+  .table {
+    @apply w-full border-collapse rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .table th {
+    @apply bg-blue-50 text-blue-600 font-semibold px-4 py-2;
+  }
+  
+  .table td {
+    @apply px-4 py-2 border-b border-gray-200;
+  }
+  
+  .table tr:nth-child(even) {
+    @apply bg-blue-50;
+  }
+  
+  .table tr:hover {
+    @apply bg-blue-100;
+  }
+  
+  /* Formulaires */
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  select,
+  textarea {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-all;
+  }
+  
+  input:disabled {
+    @apply bg-gray-100 text-gray-500 cursor-not-allowed;
+  }
+  
+  textarea {
+    @apply min-h-[100px] resize-y;
+  }
+  
+  /* Conteneurs de graphiques */
+  .chart-container {
+    @apply bg-white p-4 rounded-lg shadow-md w-full max-w-lg mx-auto mb-6;
+  }
+  
+  .chart-title {
+    @apply text-blue-600 font-medium text-center mb-4;
+  }
+  
+  /* Formulaire : Style des groupes */
+  .form-group {
+    @apply flex flex-col gap-2;
+  }
+  
+  .form-group label {
+    @apply text-blue-600 font-bold;
+  }
+  
+  /* Animations */
+  @keyframes shrinkFade {
+    from {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .chart-container {
+    animation: shrinkFade 0.5s ease-in-out;
+  }
+  
+  /* Déplaçable et redimensionnable */
+  .draggable {
+    @apply absolute cursor-grab transition-shadow;
+  }
+  
+  .draggable:active {
+    @apply cursor-grabbing shadow-2xl;
+  }
+  
+  .resizable {
+    resize: both;
+    overflow: auto;
+    min-width: 150px;
+    min-height: 100px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  

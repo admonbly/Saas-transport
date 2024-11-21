@@ -3,7 +3,6 @@ import { getTransactions, getTrips } from '../api/api';
 import { Line, Pie } from 'react-chartjs-2';
 import '../App.css';
 
-
 const Reports = () => {
   const [transactions, setTransactions] = useState([]);
   const [trips, setTrips] = useState([]);
@@ -18,12 +17,15 @@ const Reports = () => {
     fetchData();
   }, []);
 
-  // Préparer les données de graphique pour les revenus mensuels
-  const monthlyIncome = transactions.filter(t => t.type === 'income').reduce((acc, transaction) => {
-    const month = new Date(transaction.date).toLocaleString('default', { month: 'long' });
-    acc[month] = (acc[month] || 0) + transaction.amount;
-    return acc;
-  }, {});
+  // Préparer les données pour le graphique des revenus mensuels
+  const monthlyIncome = transactions
+    .filter((t) => t.type === 'income')
+    .reduce((acc, transaction) => {
+      const month = new Date(transaction.date).toLocaleString('default', { month: 'long' });
+      acc[month] = (acc[month] || 0) + transaction.amount;
+      return acc;
+    }, {});
+
   const incomeData = {
     labels: Object.keys(monthlyIncome),
     datasets: [
@@ -33,8 +35,8 @@ const Reports = () => {
         borderColor: '#FFD700',
         backgroundColor: 'rgba(255, 215, 0, 0.3)',
         fill: true,
-      }
-    ]
+      },
+    ],
   };
 
   // Données pour un graphique en secteur des trajets
@@ -42,14 +44,15 @@ const Reports = () => {
     acc[trip.routeName] = (acc[trip.routeName] || 0) + 1;
     return acc;
   }, {});
+
   const routeData = {
     labels: Object.keys(tripRoutes),
     datasets: [
       {
         data: Object.values(tripRoutes),
         backgroundColor: ['#FFD700', '#FF8C00', '#8B0000'],
-      }
-    ]
+      },
+    ],
   };
 
   return (

@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@interactjs/interactjs": "^1.10.27",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
@@ -18,9 +19,11 @@
     "express": "^4.21.1",
     "express-rate-limit": "^7.4.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.1"
+    "mongoose": "^8.8.1",
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
     "concurrently": "^9.1.0"
   }
 }

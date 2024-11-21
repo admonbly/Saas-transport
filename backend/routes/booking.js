@@ -1,16 +1,46 @@
 const express = require('express');
 const router = express.Router();
+const Booking = require('../models/Booking');
 
-// Exemple de route pour créer une réservation
-router.post('/create', (req, res) => {
-  // Logique pour créer une réservation
-  res.send('Réservation créée');
+router.get('/', async (req, res) => {
+  try {
+    const { search } = req.query;
+    const bookings = search
+      ? await Booking.find({ passengerName: { $regex: search, $options: 'i' } })
+      : await Booking.find();
+    res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
 });
 
-// Exemple de route pour récupérer toutes les réservations
-router.get('/', (req, res) => {
-  // Logique pour récupérer toutes les réservations
-  res.send('Toutes les réservations');
+router.post('/', async (req, res) => {
+  try {
+    const newBooking = new Booking(req.body);
+    await newBooking.save();
+    res.status(201).json(newBooking);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedBooking);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const booking = await Booking.findByIdAndDelete(req.params.id);
+    if (!booking) return res.status(404).json({ message: 'Réservation non trouvée' });
+    res.json({ message: 'Réservation annulée' });
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
 });
 
 module.exports = router;

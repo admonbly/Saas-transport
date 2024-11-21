@@ -2,12 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const data = require('./data.json'); // Importer les données depuis le fichier JSON
+const ticketRoutes = require('./routes/tickets');
 
 const app = express(); // Assurez-vous que app est initialisé ici
+const statsRoutes = require('./routes/stats');
+
+
+
+
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
+app.use('/api/stats', statsRoutes);
+app.use('/api/tickets', ticketRoutes);
+app.use('/api', statsRoutes);
 
 // Limiteur de taux
 const limiter = rateLimit({
@@ -31,6 +40,7 @@ app.get('/api/transactions', (req, res) => res.json(data.transactions));
 app.get('/api/financials', (req, res) => res.json(data.financials));
 app.get('/api/reports', (req, res) => res.json(data.reports));
 app.get('/api/trip-management', (req, res) => res.json(data.tripManagement));
+
 
 // Middleware de gestion des erreurs
 app.use((err, req, res, next) => {

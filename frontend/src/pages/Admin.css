@@ -1,39 +1,101 @@
 /* Admin.css & Booking.css */
 .container {
   padding: 20px;
+  background-color: #FFFFFF; /* Fond blanc */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
 }
 
 .section-title {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #FFD700;
+  color: #4A90E2; /* Bleu moderne */
+  border-bottom: 2px solid #4A90E2; /* Ligne fine sous le titre */
+  padding-bottom: 5px;
 }
 
 .table-container {
   margin-top: 20px;
 }
 
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 .table th, .table td {
   padding: 12px;
-  border-bottom: 1px solid #FFD700;
+  border-bottom: 1px solid #E0E0E0; /* Ligne grise douce */
+  text-align: left;
+}
+
+.table th {
+  background-color: #F5F9FF; /* Bleu ciel clair */
+  color: #4A90E2;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.table tr:hover {
+  background-color: #F0F4FF; /* Survol doux */
 }
 
 .button {
-  background-color: #FFD700;
-  color: #121212;
+  background-color: #4A90E2; /* Bleu moderne */
+  color: #FFFFFF; /* Texte blanc */
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #007AFF; /* Bleu plus prononcé au survol */
+  transform: translateY(-2px);
 }
 
 .button.delete {
-  background-color: #FF6347;
+  background-color: #FF6347; /* Rouge doux pour les actions dangereuses */
+  color: #FFFFFF;
 }
 
-.form-group input {
+.button.delete:hover {
+  background-color: #FF4500; /* Rouge plus intense au survol */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #4A90E2;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input, .form-group select {
   margin-bottom: 10px;
   padding: 10px;
   width: 100%;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  color: #333333;
+}
+
+.form-group input::placeholder {
+  color: #A0A0A0; /* Gris clair pour les placeholders */
+}
+
+/* Boutons d'action spécifiques */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons .button {
+  flex: 1; /* Tous les boutons ont la même taille */
 }

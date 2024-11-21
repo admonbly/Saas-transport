@@ -1,0 +1,97 @@
+/* Styles globaux */
+html, body {
+  font-family: 'Poppins', sans-serif; /* Remplace la police par défaut de Tailwind */
+  background: linear-gradient(to right, #F5F9FF, #E0F2FF); /* Couleur d'arrière-plan personnalisée */
+  color: #333;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Conteneur principal */
+.container {
+  @apply mx-auto px-5 max-w-screen-xl flex flex-col gap-5; /* Utilisation des classes Tailwind */
+}
+
+/* Barre de navigation */
+nav {
+  @apply sticky top-0 z-50 flex justify-between items-center bg-white p-4 rounded-lg shadow-md;
+}
+
+nav a {
+  @apply text-blue-600 font-medium px-4 py-2 rounded-lg transition-transform duration-300;
+}
+
+nav a:hover {
+  @apply bg-blue-100 scale-105;
+}
+
+/* Boutons principaux */
+.button {
+  @apply bg-gradient-to-r from-blue-400 to-blue-600 text-white py-3 px-6 rounded-full font-semibold transition-transform duration-300;
+}
+
+.button:hover {
+  @apply shadow-lg transform -translate-y-1;
+}
+
+/* Cartes */
+.card {
+  @apply bg-white p-6 rounded-lg shadow-lg relative overflow-hidden transition-transform duration-300;
+}
+
+.card:hover {
+  @apply transform -translate-y-1 shadow-2xl;
+}
+
+.card h3 {
+  @apply text-blue-600;
+}
+
+/* Grille fluide */
+.dashboard {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5;
+}
+
+/* Table */
+.table {
+  @apply w-full border-collapse rounded-lg overflow-hidden shadow-lg;
+}
+
+.table th {
+  @apply bg-blue-50 text-blue-600 p-4 text-left;
+}
+
+.table td {
+  @apply p-4 border-b;
+}
+
+.table tr:nth-child(even) {
+  @apply bg-blue-50;
+}
+
+.table tr:hover {
+  @apply bg-blue-100;
+}
+
+/* Déplaçable */
+.draggable {
+  @apply absolute cursor-grab transition-shadow;
+}
+
+.draggable:active {
+  @apply cursor-grabbing shadow-2xl;
+}
+
+/* Redimensionnable */
+.resizable {
+  resize: both;
+  overflow: auto;
+  min-width: 150px;
+  min-height: 100px;
+}
+

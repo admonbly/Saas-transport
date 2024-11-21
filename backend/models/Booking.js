@@ -1,10 +1,10 @@
-// backend/models/Booking.js
 const mongoose = require('mongoose');
 
-const bookingSchema = new mongoose.Schema({
+const BookingSchema = new mongoose.Schema({
   passengerName: { type: String, required: true },
-  tripId: { type: Number, required: true },
-  status: { type: String, enum: ['Confirmed', 'Pending', 'Cancelled'], default: 'Pending' }
+  tripId: { type: mongoose.Schema.Types.ObjectId, ref: 'Trip', required: true },
+  status: { type: String, enum: ['Pending', 'Confirmed', 'Cancelled'], default: 'Pending' },
+  createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Booking', bookingSchema);
+module.exports = mongoose.model('Booking', BookingSchema);
