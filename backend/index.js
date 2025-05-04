@@ -3,13 +3,14 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const data = require('./data.json'); // Importer les données depuis le fichier JSON
 const ticketRoutes = require('./routes/tickets');
+const errorHandler = require('./middlewares/errorHandler');
+const setupSwagger = require('./swagger');
 
 const app = express(); // Assurez-vous que app est initialisé ici
 const statsRoutes = require('./routes/stats');
 
-
-
-
+// Configuration pour éviter le warning express-rate-limit
+app.set('trust proxy', 1);
 
 // Middlewares
 app.use(cors());
@@ -26,6 +27,9 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+// Intégration de Swagger
+setupSwagger(app);
+
 // Route pour la page d'accueil
 app.get('/', (req, res) => {
   res.send('Bienvenue dans l’API de Transport');
@@ -41,12 +45,8 @@ app.get('/api/financials', (req, res) => res.json(data.financials));
 app.get('/api/reports', (req, res) => res.json(data.reports));
 app.get('/api/trip-management', (req, res) => res.json(data.tripManagement));
 
-
 // Middleware de gestion des erreurs
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Erreur interne du serveur' });
-});
+app.use(errorHandler);
 
 // Démarrer le serveur
 const PORT = process.env.PORT || 5000;

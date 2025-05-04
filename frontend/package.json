@@ -4,16 +4,24 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@interactjs/interactjs": "^1.10.27",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2",
     "axios": "^0.27.2",
-    "chart.js": "^3.7.0",
+    "chart.js": "^4.0.0",
+    "framer-motion": "^6.2.4",
     "qrcode.react": "^4.1.0",
-    "react": "^17.0.2",
-    "react-chartjs-2": "^3.0.4",
-    "react-dom": "^17.0.2",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.0.0",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^1.0.1",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
@@ -41,6 +49,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "concurrently": "^9.1.0"
   }
