@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const authenticateJWT = require('../middlewares/authenticateJWT');
 
 router.get('/', async (req, res) => {
   try {
@@ -31,6 +32,21 @@ router.put('/:id/role', async (req, res) => {
     res.json(user);
   } catch (error) {
     res.status(500).json({ message: 'Erreur serveur' });
+  }
+});
+
+router.put('/profile', authenticateJWT, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const { name, email, phone } = req.body;
+    const updated = await User.findByIdAndUpdate(
+      userId,
+      { name, email, phone },
+      { new: true, runValidators: true }
+    );
+    res.json({ message: 'Profil mis à jour', user: updated });
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur lors de la mise à jour du profil', error });
   }
 });
 
